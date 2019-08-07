@@ -8,4 +8,4 @@ Another possibility would be to use rejection sampling, which I am planning to i
 
 #### Example
 ![Example](/CI1.png)
-PDF in red, sampled distribution in blue, and the 95% confidence interval of the 95% quantile in green.
+PDF in red, sampled distribution in blue, and a 95% confidence interval of the 95% quantile in green.
