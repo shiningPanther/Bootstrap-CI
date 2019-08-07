@@ -36,7 +36,7 @@ def createSample(N):
 	print('95% quantile obtained from random sample: {}'.format(sample_percentile))
 	return sample, sample_percentile
 
-def plotSample(sample):
+def plotCI(sample,CI):
 	# Plot the pdf
 	custom_cv = custom_pdf(a=0, name='custom_pdf')
 	fig, ax = plt.subplots(1, 1)
@@ -45,6 +45,9 @@ def plotSample(sample):
 
 	# Plot the sample
 	plt.hist(sample,bins=100,density=True)
+
+	# Plot CI
+	ax.hlines(y=-0.005, xmin=CI[0], xmax=CI[1], linewidth=3, color='g')
 	plt.show()
 
 	# Calculate mean, variance, skewness and curtosis.
@@ -66,13 +69,13 @@ def bootstrap(nboot, sample, sample_percentile):
 
 N = 2000 # Number of points of the sample
 sample, sample_percentile = createSample(N)
-plotSample(sample)
 
 nboot = 100000 # Number of simulations for the bootstrap
 delta_array = bootstrap(nboot, sample, sample_percentile)
 delta_percentile = np.percentile(delta_array, [97.5, 2.5]) # The bootstrap 95% confidence interval is given by the 97.5% and 2.5% quantile of the deltas
 conf_interval = sample_percentile - delta_percentile
 print('95% confidence interval obtained from bootstrap: {}'.format(conf_interval))
+plotCI(sample,conf_interval)
 
 
 
