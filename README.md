@@ -1,3 +1,5 @@
+# Bootstrap Confidence Interval
+
 #### Overview
 A script written in Python to calculate the 95% confidence interval of a quantile of a sample (here the 95% quantile) using the empirical bootstrap method.
 The pdf can be customly designed, in this script it is a Gamma distribution.
